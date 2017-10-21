@@ -58,10 +58,14 @@ class PlayersController extends Controller
 			'lastname' => 'required'
 		]);
         $requestData = $request->all();
-        
-        Player::create($requestData);
 
-        Session::flash('flash_message', 'Player added!');
+        $count = Player::where('team_id', $requestData['team_id'])->count();
+        if ($count < 3) {
+            Player::create($requestData);
+            Session::flash('flash_message', 'Player added!');
+        } else {
+            Session::flash('flash_message', 'You can add only 3 players to the team!');
+        }
 
         return redirect('admin/players');
     }
