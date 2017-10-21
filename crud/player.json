@@ -1,0 +1,45 @@
+{
+    "fields": [
+        {
+            "name": "firstname",
+            "type": "string"
+        },
+        {
+            "name": "lastname",
+            "type": "string"
+        },
+        {
+            "name": "age",
+            "type": "integer#unsigned"
+        },
+        {
+            "name": "team_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "team_id",
+            "references": "id",
+            "on": "teams",
+            "onDelete": "cascade"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "team",
+            "type": "belongsTo",
+            "class": "App\\Team"
+        }
+    ],
+    "validations": [
+        {
+            "field": "firstname",
+            "rules": "required"
+        },
+        {
+            "field": "lastname",
+            "rules": "required"
+        }
+    ]
+}

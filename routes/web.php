@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('admin/teams', 'Admin\\TeamsController');
+Route::resource('admin/players', 'Admin\\PlayersController');
