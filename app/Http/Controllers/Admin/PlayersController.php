@@ -64,7 +64,7 @@ class PlayersController extends Controller
             Player::create($requestData);
             Session::flash('flash_message', 'Player added!');
         } else {
-            Session::flash('flash_message', 'You can add only 3 players to the team!');
+            Session::flash('flash_error', 'You can add only 3 players to the team!');
         }
 
         return redirect('admin/players');
